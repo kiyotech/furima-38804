@@ -42,12 +42,12 @@
 | Column   | Type       | Options                        |
 | -------- | ---------- | ------------------------------ |
 | item     | references | null: false, foreign_key: true |
-| shipping | references | null: false, foreign_key: true |
+| user     | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :item
-- has_many :users
+- belongs_to :users
 - has_one :shipping
 
 ## shippings テーブル

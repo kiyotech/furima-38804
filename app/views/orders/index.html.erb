@@ -43,7 +43,7 @@
           <label class="form-text">カード情報</label>
           <span class="indispensable">必須</span>
         </div>
-        <div id='number' class="payjs-outer form-wrap">
+        <div id='number' class="input-default PayjpElement PayjpElement--empty" ></div>
         <div class='available-card'>
           <%= image_tag 'card-visa.gif', class: 'card-logo'%>
           <%= image_tag 'card-mastercard.gif', class: 'card-logo'%>
@@ -57,7 +57,7 @@
           <span class="indispensable">必須</span>
         </div>
         <div class='input-expiration-date-wrap'>
-          <div id='exp-date' class="payjs-outer form-wrap">
+          <div id='exp-date' class="input-default PayjpElement PayjpElement--empty"></div>
         </div>
       </div>
       <div class="form-group">
@@ -65,7 +65,7 @@
           <label class="form-text">セキュリティコード</label>
           <span class="indispensable">必須</span>
         </div>
-        <div id='cvc' class="payjs-outer form-wrap">
+        <div id='cvc' class="input-default payjs-outer form-wrap"></div>
       </div>
     </div>
     <%# /カード情報の入力 %>

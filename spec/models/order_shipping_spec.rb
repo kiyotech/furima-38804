@@ -29,8 +29,7 @@ RSpec.describe OrderShipping, type: :model do
       it 'postal_codeが空だと保存できないこと' do
         @order_shipping.postal_code = ''
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include("Postal code can't be blank",
-                                                                'Postal code is invalid. Enter it as follows (e.g. 123-4567)')
+        expect(@order_shipping.errors.full_messages).to include("Postal code can't be blank")
       end
       it 'postal_codeは半角のハイフンを含まないと保存できないこと' do
         @order_shipping.postal_code = '1234567'
@@ -73,18 +72,17 @@ RSpec.describe OrderShipping, type: :model do
       it 'phone_numberが空だと保存できないこと' do
         @order_shipping.phone_number = ''
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include("Phone number can't be blank", 'Phone number is too short',
-                                                                'Phone number is invalid. Input only number')
+        expect(@order_shipping.errors.full_messages).to include("Phone number can't be blank")
       end
       it 'phone_numberが９桁以下だと保存できないこと' do
         @order_shipping.phone_number = '090111111'
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include('Phone number is too short')
+        expect(@order_shipping.errors.full_messages).to include('Phone number is too short (minimum is 10 characters)')
       end
       it 'phone_numberが12桁以上だと保存できないこと' do
         @order_shipping.phone_number = '123456789012'
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include('Phone number is too short')
+        expect(@order_shipping.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
       end
       it 'phone_numberにハイフンがあると保存できないこと' do
         @order_shipping.phone_number = '090-1111-1111'

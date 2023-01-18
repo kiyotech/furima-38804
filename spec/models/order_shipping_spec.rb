@@ -77,27 +77,27 @@ RSpec.describe OrderShipping, type: :model do
       it 'phone_numberが９桁以下だと保存できないこと' do
         @order_shipping.phone_number = '090111111'
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include('Phone number is too short (minimum is 10 characters)')
+        expect(@order_shipping.errors.full_messages).to include('Phone number is invalid')
       end
       it 'phone_numberが12桁以上だと保存できないこと' do
         @order_shipping.phone_number = '123456789012'
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
+        expect(@order_shipping.errors.full_messages).to include('Phone number is invalid')
       end
       it 'phone_numberにハイフンがあると保存できないこと' do
         @order_shipping.phone_number = '090-1111-1111'
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include('Phone number is invalid. Input only number')
+        expect(@order_shipping.errors.full_messages).to include('Phone number is invalid')
       end
       it 'phone_numberが全角だと保存できないこと' do
         @order_shipping.phone_number = '０９０１１１１１１１１'
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include('Phone number is invalid. Input only number')
+        expect(@order_shipping.errors.full_messages).to include('Phone number is invalid')
       end
       it 'phone_numberが数字以外だと保存できないこと' do
         @order_shipping.phone_number = 'aaabbbbcccc'
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include('Phone number is invalid. Input only number')
+        expect(@order_shipping.errors.full_messages).to include('Phone number is invalid')
       end
 
       it 'userが紐付いていないと保存できないこと' do

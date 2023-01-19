@@ -34,28 +34,28 @@ RSpec.describe OrderShipping, type: :model do
       it 'postal_codeは半角のハイフンを含まないと保存できないこと' do
         @order_shipping.postal_code = '1234567'
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include('Postal code is invalid. Enter it as follows (e.g. 123-4567)')
+        expect(@order_shipping.errors.full_messages).to include('Postal code はハイフンを含む半角数字で記入してください（例 123-4567）')
       end
       it 'postal_codeは半角英字が含まれると保存できないこと' do
         @order_shipping.postal_code = '12c-4567'
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include('Postal code is invalid. Enter it as follows (e.g. 123-4567)')
+        expect(@order_shipping.errors.full_messages).to include('Postal code はハイフンを含む半角数字で記入してください（例 123-4567）')
       end
       it 'postal_codeは全角が含まれると保存できないこと' do
         @order_shipping.postal_code = '12３-4567'
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include('Postal code is invalid. Enter it as follows (e.g. 123-4567)')
+        expect(@order_shipping.errors.full_messages).to include('Postal code はハイフンを含む半角数字で記入してください（例 123-4567）')
       end
 
       it 'prefecture_idが空では出品できない' do
         @order_shipping.prefecture_id = ''
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@order_shipping.errors.full_messages).to include("Prefecture を入力してください")
       end
       it 'prefecture_idが---では出品できない' do
         @order_shipping.prefecture_id = '1'
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@order_shipping.errors.full_messages).to include("Prefecture を入力してください")
       end
 
       it 'cityが空だと保存できないこと' do
